@@ -53,4 +53,18 @@ connection.connect(function(err) {
     console.log(t.toString())
     start();
   }
-
+  function viewLowInventory(results){
+    const t = new Table
+    results.forEach(function(item) {
+    if(item.stock_quantity <= 5){
+      t.cell('Product Id', item.id)
+      t.cell('Name', item.product_name)
+      t.cell('Department', item.department_name)
+      t.cell('Price', item.price, Table.number(2))
+      t.cell('Quantity', item.stock_quantity, Table.number(0))
+      t.newRow()
+    }
+    })
+    console.log(t.toString())
+    start();
+  }
