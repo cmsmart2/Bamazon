@@ -64,7 +64,7 @@ function purchaseItem(items){
             message: 'How many would you like to purchase?',
           }]).then(function(answer){
             if(items[id].stock_quantity-answer.quantity>=0){
-              connection.query("UPDATE inventory SET stock_quantity='"+(items[id].stock_quantity-answer.quantity)+"WHERE product_name='"+purchase+"'", function(err, purchased){
+              connection.query("UPDATE inventory SET stock_quantity='"+(items[id].stock_quantity-answer.quantity)+"'WHERE product_name='"+purchase+"'", function(err, purchased){
                 console.log(`Thanks you for your purchase of ${answer.quantity} ${purchase}!`)
                 start();
               })

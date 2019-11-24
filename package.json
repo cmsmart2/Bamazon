@@ -6,7 +6,6 @@
   "dependencies": {
     "easy-table": "^1.1.1",
     "inquirer": "^6.2.1",
-    "mysql": "^2.16.0",
-    "table": "^5.4.6"
+    "mysql": "^2.16.0"
   }
 }
