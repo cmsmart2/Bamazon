@@ -57,16 +57,17 @@ function purchaseItem(items){
       items.forEach(item => {
         if(item.product_name === answer.item){
           let purchase = answer.item
-          let id = item.id
+          let id = item.id-1;
           console.log('purchase ' + purchase)
           console.log('id '+ id)
+          console.log(items[id])
           console.log("stock "+ items[id].stock_quantity)
           inquirer.prompt([{
             name: 'quantity',
             type: 'number',
             message: 'How many would you like to purchase?',
           }]).then(function(answer){
-            if(items[id].stock_quantity-answer.quantity>0){
+            if(items[id].stock_quantity-answer.quantity>=0){
               console.log("stock " +  items[id].stock_quantity)
               console.log("buying " + answer.quantity)
               connection.query("UPDATE inventory SET stock_quantity='"+(items[id].stock_quantity-answer.quantity)+"'WHERE product_name='"+purchase+"'", function(err, purchased){
