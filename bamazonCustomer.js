@@ -58,20 +58,14 @@ function purchaseItem(items){
         if(item.product_name === answer.item){
           let purchase = answer.item
           let id = item.id-1;
-          console.log('purchase ' + purchase)
-          console.log('id '+ id)
-          console.log(items[id])
-          console.log("stock "+ items[id].stock_quantity)
           inquirer.prompt([{
             name: 'quantity',
             type: 'number',
             message: 'How many would you like to purchase?',
           }]).then(function(answer){
             if(items[id].stock_quantity-answer.quantity>=0){
-              console.log("stock " +  items[id].stock_quantity)
-              console.log("buying " + answer.quantity)
-              connection.query("UPDATE inventory SET stock_quantity='"+(items[id].stock_quantity-answer.quantity)+"'WHERE product_name='"+purchase+"'", function(err, purchased){
-                console.log(`Thanks you for your purchase!`)
+              connection.query("UPDATE inventory SET stock_quantity='"+(items[id].stock_quantity-answer.quantity)+"WHERE product_name='"+purchase+"'", function(err, purchased){
+                console.log(`Thanks you for your purchase of ${answer.quantity} ${purchase}!`)
                 start();
               })
             }else{
