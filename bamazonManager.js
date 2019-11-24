@@ -99,3 +99,32 @@ connection.connect(function(err) {
       });
     });
   }
+function addNewInventory (results){
+    inquirer
+    .prompt([
+    {
+        name: 'product_name',
+        type: 'input',
+        message: 'Which item would you like to add?'},
+    {
+        name: 'department_name',
+        type: 'input',
+        message: 'What department is it in?'},
+    {
+        name: 'price',
+        type: 'number',
+        message: 'How much does this item cost?'},
+    {
+        name: 'stock_quantity',
+      type: 'number',
+      message: 'How many of this item are for sale?'},
+    ]).then (function(answer){
+        let sql = `INSERT INTO inventory (product_name, department_name, price, stock_quantity) VALUES ("${answer.product_name}", "${answer.department_name}", "${answer.price}", "${answer.stock_quantity}")`;
+        console.log(sql)
+        connection.query(sql, function (err, result) {
+            if (err) throw err;
+            console.log("1 record inserted");
+            start();
+        });
+    })
+}
