@@ -11,6 +11,3 @@ CREATE TABLE inventory(
   stock_quantity INT default 0,
   PRIMARY KEY (id)
 );
-
-INSERT INTO inventory (product_name, department_name, price)
-VALUES ("Ipod", 250, "apple");
