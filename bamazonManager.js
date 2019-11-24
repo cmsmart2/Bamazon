@@ -68,3 +68,34 @@ connection.connect(function(err) {
     console.log(t.toString())
     start();
   }
+  function addInventory (results){
+    inquirer
+    .prompt([{
+      name: 'item',
+      type: 'input',
+      message: 'Which item would you like to add more inventory?',
+    }]).then(function(answer){
+        results.forEach(item => {
+          if(item.product_name === answer.item){
+            let product = answer.item
+            console.log(product)
+            let id = item.id-1;
+            inquirer.prompt([{
+              name: 'quantity',
+              type: 'number',
+              message: 'How many would you like to add?',
+            }]).then(function(answer){
+              if(results[id].stock_quantity+answer.quantity>=0){
+                connection.query("UPDATE inventory SET stock_quantity='"+(results[id].stock_quantity+answer.quantity)+"'WHERE product_name='"+product+"'", function(err, product){
+                  console.log(`You have updated the inventory`)
+                  start();
+                })
+              }else{
+                console.log("Not a Valid Selection!")
+                start();
+              }
+            })
+          }
+      });
+    });
+  }
