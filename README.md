@@ -35,3 +35,12 @@ Add more inventory
 
 ![Alt text](./images/adding_new.PNG?raw=true "Add new product")
 Add a new product
+
+Why the Project is Useful
+The app fulfills a homework assignment for University of Kansas Coding Boot Camp, August 2019 to February 2020. Besides allowing me to continue working with Node.js and npm packages.
+
+Where Users Can Get Help with This Project
+Questions? Contact Cera Smart at cera_smart@yahoo.com
+
+Who Maintains and Contributes to the Project
+Cera Smart
